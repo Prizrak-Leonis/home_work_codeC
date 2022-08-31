@@ -6,11 +6,9 @@ while (numN < 2)
 {
     Console.Write("Введите число больше 1: ");
     numN = Convert.ToInt32(Console.ReadLine());
-}    
+}
 int n = 2;
-while (n <= numN )
-{
+for ( n = 2; n<=numN; n++ )
 if (n%2 == 0)
     Console.Write(n + " ");
-n++;
-}
+
