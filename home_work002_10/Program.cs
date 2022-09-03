@@ -1,6 +1,6 @@
 ﻿// Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
 
-int inputNumbersAAA()
+int inputNumberAAA()
 {
     Console.Write("Введите трёхзначное число: ");
     int a = Convert.ToInt32(Console.ReadLine());
@@ -12,7 +12,7 @@ int inputNumbersAAA()
     return a;
 }
 
-int numA = inputNumbersAAA();
+int numA = inputNumberAAA();
 Console.Write("Вторая цифра числа это: ");
 Console.WriteLine(Convert.ToString(numA)[1]);
 
