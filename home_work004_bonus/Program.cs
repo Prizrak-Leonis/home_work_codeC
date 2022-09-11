@@ -13,15 +13,15 @@ Console.WriteLine("[" + string.Join(", ", bush) + "]");
 int berryMax = 0;
 int bushMax = 0;
 
-if (bush[0] + bush[1] + bush[bush.Length-1] > bush[0] + bush[bush.Length - 2] + bush[bush.Length-1])
+if (bush[0] + bush[1] + bush[bush.Length - 1] > bush[0] + bush[bush.Length - 2] + bush[bush.Length - 1])
 {
-    berryMax = bush[0] + bush[1] + bush[bush.Length-1];
+    berryMax = bush[0] + bush[1] + bush[bush.Length - 1];
     bushMax = 0;
 }
 else
 {
-    berryMax = bush[0] + bush[bush.Length - 2] + bush[bush.Length-1];
-    bushMax = bush.Length;
+    berryMax = bush[0] + bush[bush.Length - 2] + bush[bush.Length - 1];
+    bushMax = bush.Length - 1;
 }
 
 for (int j = 1; j < (bush.Length - 1); j++)
@@ -29,8 +29,8 @@ for (int j = 1; j < (bush.Length - 1); j++)
     if (bush[j - 1] + bush[j] + bush[j + 1] > berryMax)
     {
         berryMax = bush[j - 1] + bush[j] + bush[j + 1];
-        bushMax = j; 
+        bushMax = j;
     }
 }
 Console.WriteLine("Максимальное кол-во ягод которое может собрать система автоматического сбора черники: " + berryMax);
-Console.WriteLine("Для этого системе нужно выбрать "+(bushMax+1)+"-й куст и соседние с ним из " + bush.Length + " кустов");
+Console.WriteLine("Для этого системе нужно выбрать " + (bushMax + 1) + "-й куст и соседние с ним из " + bush.Length + " кустов");
