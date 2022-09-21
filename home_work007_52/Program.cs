@@ -6,7 +6,7 @@ void InputMatrix(int[,] matrix)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(1, 10);
+            matrix[i, j] = new Random().Next(1, 100);
         }
     }
 }
@@ -20,7 +20,7 @@ void WriteMatrix(int[,] matrix)
         {
             if (matrix[i, j] < 10)
                 Console.Write(" ");
-            Console.Write(matrix[i, j] + "  ");
+            Console.Write(matrix[i, j] + " \t");
         }
         Console.WriteLine();
     }
@@ -41,5 +41,5 @@ for (int j = 0; j < colums; j++)
     {
         summ += massive[i,j];
     }
-    Console.Write($"{Math.Round(summ/lines,2)};  ");
+    Console.Write(Math.Round(summ/lines,2) + " \t");
 }

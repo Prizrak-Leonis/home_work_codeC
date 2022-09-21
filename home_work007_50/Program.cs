@@ -20,7 +20,7 @@ void WriteMatrix(int[,] matrix)
         {
             if (matrix[i, j] < 10)
                 Console.Write(" ");
-            Console.Write(matrix[i, j] + "  ");
+            Console.Write(matrix[i, j] + " \t");
         }
         Console.WriteLine();
     }

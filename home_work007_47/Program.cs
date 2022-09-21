@@ -1,19 +1,17 @@
 ﻿// Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 
-Console.Clear();
 void WriteMatrix(double[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            Console.SetCursorPosition(j * 7, i + 3);
             if (matrix[i, j] >= 0)
                 Console.Write(" ");
-            Console.Write(matrix[i, j]);
+            Console.Write(matrix[i, j] + " \t");
         }
+        Console.WriteLine();
     }
-    Console.WriteLine();
 }
 
 void InputMatrix(double[,] matrix)
