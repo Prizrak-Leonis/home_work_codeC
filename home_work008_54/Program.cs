@@ -1,4 +1,5 @@
-﻿// Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов. Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+﻿// Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
+
 void InputMatrix(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
@@ -25,27 +26,29 @@ void WriteMatrix(int[,] matrix)
     }
 }
 
-int lineMinimalSumm(int[,] matrix)
+int[,] sortLine(int[,] matrix)
 {
-    int summMin = 0;
-    int lineMin = 0;
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    for (int l = 0; l < matrix.GetLength(0); l++)
     {
-        int summ = 0;
-        for (int j = 0; j < matrix.GetLength(1); j++)
+        for (int i = 0; i < matrix.GetLength(1) - 1; i++)
         {
-            summ += matrix[i, j];
-        }
-        if (i == 0)
-            summMin = summ;
-        else if (summ < summMin)
-        {
-            summMin = summ;
-            lineMin = i;
+            int max = i;
+            for (int j = i + 1; j < matrix.GetLength(1); j++)
+            {
+                if (matrix[l,j] > matrix[l,max])
+                    max = j;
+            }
+            if (max != i)
+            {
+                int temp = matrix[l,i];
+                matrix[l,i] = matrix[l,max];
+                matrix[l,max] = temp;
+            }
         }
     }
-    return lineMin;
+    return matrix;
 }
+
 
 Console.Write("Введите кол-во строк в матрице: ");
 int lines = Convert.ToInt32(Console.ReadLine());
@@ -54,11 +57,5 @@ int colums = Convert.ToInt32(Console.ReadLine());
 int[,] massive = new int[lines, colums];
 InputMatrix(massive);
 WriteMatrix(massive);
-int lineMinSumm = lineMinimalSumm(massive);
-Console.WriteLine();
-Console.Write("Строка с минимальной суммой всех значений: ");
-for (int i = 0; i < massive.GetLength(1) - 1; i++)
-{
-    Console.Write(massive[lineMinSumm, i] + ", ");
-}
-Console.Write(massive[lineMinSumm, massive.GetLength(1) - 1]);
+
+WriteMatrix(sortLine(massive));

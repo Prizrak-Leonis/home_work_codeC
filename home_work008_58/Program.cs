@@ -1,55 +1,66 @@
-﻿// Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+﻿// Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
-void inputMassive3d(int[,,] massive)
+void InputMatrix(int[,] matrix)
 {
-    int[] tempMassive = new int[massive.GetLength(0) * massive.GetLength(1) * massive.GetLength(2)];
-    int l = 0;
-    for (int i = 0; i < massive.GetLength(0); i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for (int j = 0; j < massive.GetLength(1); j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            for (int k = 0; k < massive.GetLength(2); k++)
-            {
-                bool flag = true;
-                int tempElem = 0;
-                while (flag)
-                {
-                    tempElem = new Random().Next(1, tempMassive.Length+1);
-                    int count = 0;
-                    foreach (int item in tempMassive)
-                    {
-                        if (tempElem == item)
-                            count++;
-                    }
-                    if (count == 0)
-                        flag = false;
-                }
-                massive[i,j,k] = tempElem;
-                tempMassive[l] = tempElem;
-                l++;
-            }
+            matrix[i, j] = new Random().Next(2, 5);
         }
     }
 }
 
-void WriteMassive3d(int[,,] massive)
+void WriteMatrix(int[,] matrix)
 {
-    for (int i = 0; i < massive.GetLength(0); i++)
+    Console.WriteLine();
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for (int j = 0; j < massive.GetLength(1); j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            for (int k = 0; k < massive.GetLength(2); k++)
-            {
-                if (massive[i,j,k]<10)
-                    Console.Write(" ");
-                Console.Write($"{massive[i,j,k]} ({i}, {j}, {k}) \t" );
-            }
-            Console.WriteLine();
+            if (matrix[i, j] < 10)
+                Console.Write(" ");
+            Console.Write(matrix[i, j] + " \t");
         }
         Console.WriteLine();
     }
 }
 
-int[,,] massive3d = new int[3,4,5]; 
-inputMassive3d(massive3d);
-WriteMassive3d(massive3d);
+Console.WriteLine("Перемножение матриц возможно только в случае когда кол-во стобцов первой матрицы совпадает с кол-во строк вo второй");
+Console.Write("Введите кол-во строк в вервой матрице: ");
+int lines1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите кол-во столбцов в первой матрице: ");
+int colums1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите кол-во строк вщ второй матрице: ");
+int lines2 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите кол-во столбцов во второй матрице: ");
+int colums2 = Convert.ToInt32(Console.ReadLine());
+
+if (colums1 == lines2)
+{
+    int[,] massive1 = new int[lines1, colums1];
+    int[,] massive2 = new int[lines2, colums2];
+    int[,] massiveResult = new int[lines1, colums2];
+
+    InputMatrix(massive1);
+    WriteMatrix(massive1);
+
+    InputMatrix(massive2);
+    WriteMatrix(massive2);
+
+    for (int i = 0; i < massiveResult.GetLength(0); i++)
+    {
+        for (int j = 0; j < massiveResult.GetLength(1); j++)
+        {
+            int temp = 0;
+            for (int k = 0; k < colums1; k++)
+            {
+                temp += massive1[i,k]*massive2[k,j];
+            }
+        massiveResult[i,j] = temp;
+        }
+    }
+    WriteMatrix(massiveResult);
+}
+else
+    Console.Write("Невозможно перемножить такие матрицы");
