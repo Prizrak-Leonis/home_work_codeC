@@ -3,9 +3,6 @@
 void inputMassive3d(int[,,] massive)
 {
     int[] tempMassive = new int[massive.GetLength(0) * massive.GetLength(1) * massive.GetLength(2)];
-    int maxRandomNumber = 1000;
-    if (maxRandomNumber < tempMassive.Length)
-        maxRandomNumber = tempMassive.Length;
     int l = 0;
     for (int i = 0; i < massive.GetLength(0); i++)
     {
@@ -17,7 +14,7 @@ void inputMassive3d(int[,,] massive)
                 int tempElem = 0;
                 while (flag)
                 {
-                    tempElem = new Random().Next(1, maxRandomNumber + 1);
+                    tempElem = new Random().Next(10, 100);
                     int count = 0;
                     foreach (int item in tempMassive)
                     {
@@ -43,19 +40,17 @@ void WriteMassive3d(int[,,] massive)
         for (int j = 0; j < massive.GetLength(1); j++)
         {
             for (int k = 0; k < massive.GetLength(2); k++)
-            {
-                if (massive[i, j, k] < 10)
-                    Console.Write(" ");
-                if (massive[i, j, k] < 100)
-                    Console.Write(" ");
                 Console.Write($"{massive[i, j, k]} ({i}, {j}, {k}) \t");
-            }
             Console.WriteLine();
         }
-
     }
 }
 
 int[,,] massive3d = new int[3, 4, 5];
-inputMassive3d(massive3d);
-WriteMassive3d(massive3d);
+if (massive3d.GetLength(0) * massive3d.GetLength(1) * massive3d.GetLength(2) <= 90)
+{
+    inputMassive3d(massive3d);
+    WriteMassive3d(massive3d);
+}
+else
+    Console.WriteLine("Для заполнения такого массива не хватит двухзначных числе");
