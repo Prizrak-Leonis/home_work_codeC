@@ -51,7 +51,7 @@ int[,] massive = new int[lines, colums];
 InputMatrix(massive);
 WriteMatrix(massive);
 int lineMinSumm = lineMinimalSumm(massive);
-Console.WriteLine("Бросок с минимальным значением: ");
+Console.WriteLine($"{lineMinSumm+1}-й бросок был с минимальным суммарным значением костей: ");
 for (int i = 0; i < massive.GetLength(1) - 1; i++)
 {
     Console.Write(massive[lineMinSumm, i] + ", ");
