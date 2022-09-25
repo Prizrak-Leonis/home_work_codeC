@@ -46,6 +46,5 @@ int[,] InputMatrix(int[,] matrix)
 return matrix;
 }
 
-
 int[,] massive = new int[4, 4];
 WriteMatrix(InputMatrix(massive));
