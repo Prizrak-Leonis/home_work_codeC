@@ -6,7 +6,7 @@ void InputMatrix(int[,] matrix)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(2, 5);
+            matrix[i, j] = new Random().Next(2, 6);
         }
     }
 }
@@ -31,7 +31,7 @@ Console.Write("Введите кол-во строк в вервой матри�
 int lines1 = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите кол-во столбцов в первой матрице: ");
 int colums1 = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите кол-во строк вщ второй матрице: ");
+Console.Write("Введите кол-во строк во второй матрице: ");
 int lines2 = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите кол-во столбцов во второй матрице: ");
 int colums2 = Convert.ToInt32(Console.ReadLine());

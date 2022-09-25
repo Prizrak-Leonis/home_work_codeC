@@ -5,7 +5,7 @@ void InputMatrix(int[,] matrix)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(1, 100);
+            matrix[i, j] = new Random().Next(1, 7);
         }
     }
 }
@@ -16,11 +16,7 @@ void WriteMatrix(int[,] matrix)
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            if (matrix[i, j] < 10)
-                Console.Write(" ");
-            Console.Write(matrix[i, j] + " \t");
-        }
+            Console.Write(matrix[i, j] + "  ");
         Console.WriteLine();
     }
 }
@@ -47,16 +43,15 @@ int lineMinimalSumm(int[,] matrix)
     return lineMin;
 }
 
-Console.Write("Введите кол-во строк в матрице: ");
-int lines = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите кол-во столбцов в матрице: ");
+Console.Write("Введите кол-во бросаемых за раз кубиков: ");
 int colums = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите кол-во бросков кубиков: ");
+int lines = Convert.ToInt32(Console.ReadLine());
 int[,] massive = new int[lines, colums];
 InputMatrix(massive);
 WriteMatrix(massive);
 int lineMinSumm = lineMinimalSumm(massive);
-Console.WriteLine();
-Console.Write("Строка с минимальной суммой всех значений: ");
+Console.WriteLine("Бросок с минимальным значением: ");
 for (int i = 0; i < massive.GetLength(1) - 1; i++)
 {
     Console.Write(massive[lineMinSumm, i] + ", ");
